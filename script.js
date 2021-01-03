@@ -5,7 +5,8 @@ const ctx = canvas.getContext('2d');
 const box = 25;
 //both for width and height
 const canvasSize = 23;
-
+//score variable
+let score = 0;
 //load snake starting position
 let snake =[];
 snake[0] =
@@ -39,15 +40,20 @@ function draw() {
 ctx.fillStyle = "lightgreen";
 //(x,y,width,height)
 ctx.fillRect(box,box,canvasSize*box - box,canvasSize*box - box);
-ctx.fillStyle = "green";
-ctx.fillRect(snake[0].x,snake[0].y,box,box);
-
 //draw snake head
 for(let i = 0; i<snake.length; i++)
 {
-    ctx.fillStyle ='green[0],red[1]';
+    ctx.fillStyle ='green';
     ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    if(snake[i].x == food.x && snake[i].y ==food.y)
+    {
+    food = {
+			x: Math.floor(1 + (Math.random() * (canvasSize - 1))) * box,
+			y: Math.floor(1 + (Math.random() * (canvasSize - 1))) * box
+
+    }
 }
+    }
 
 //move the snake head
     let snakeX = snake[0].x;
@@ -62,7 +68,7 @@ for(let i = 0; i<snake.length; i++)
     if(dir == 'DOWN')
         snakeY += box;
 
-    //if my snake eat fruit
+    //if my snake eat fruits 
     if(snakeX == food.x && snakeY == food.y)
     {
         score +=1;
@@ -80,6 +86,25 @@ for(let i = 0; i<snake.length; i++)
             y: snakeY
 
     };
+    
+
+    //Check collision
+    function collision(head,array){
+        for(let i=0; i <array.length; i++)
+        {
+            if(head.x == array[i].x && head.y == array[i].y)
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+    //Game over
+    if(snakeX < box || snakeY < box || snakeX >((canvasSize - 1) * box)|| snakeY >((canvasSize - 1)* box) || collision(newHead,snake))
+    {
+    clearInterval(game);
+    }
     snake.unshift(newHead);
     //draw in food
     ctx.fillStyle ='red';
