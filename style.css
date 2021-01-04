@@ -34,3 +34,13 @@
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
 }
+
+.snakes{
+    width: auto;
+    height:200px;
+    ;
+}
+
+.Text{
+    color:blue;
+}

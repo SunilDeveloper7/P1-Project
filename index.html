@@ -7,10 +7,10 @@
     <link rel='stylesheet' href='style.css'>
     <style>
 		#layers{
-        position: absolute;
+        justify-self: normal;
         }
         #canvas{
-            background-color:orangered ;
+            background-color:green ;
         }
         #canvas1{
             background-color:black;
@@ -24,11 +24,14 @@
 </head>
 <body>
 <div class='splash'>
-    <h1 class='fade-in'>Welcome to Snake Game</h1>
-</div> <br>
+    <h1 class='fade-in'>Welcome to Snake Box <img class='snakes' src="snake.jpeg" alt="repile"/></h1>
+</div> 
+
 <section id='layers'>
 <canvas id = 'canvas' width = '600' height = '600'></canvas>
-<canvas id = 'canvas1' width='300' height ='400'></canvas>
+
+<canvas id = 'canvas1' width='300' height ='400'>
+</canvas>
 <canvas id = 'canvas2' width='600' height ='600'></canvas>
 </section>
 <script src="script.js"></script>
