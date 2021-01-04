@@ -4,25 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
+    <link rel='stylesheet' href='style.css'>
     <style>
 		#layers{
-            background-color:white;
-            display:flex ;
+        position: absolute;
+        }
+        #canvas{
+            background-color:orangered ;
         }
         #canvas1{
-            background-color:aqua;
-            margin:auto;
-            border:5cm
-
+            background-color:black;
         }
         #canvas2{
-            background-color:maroon;
+            background-color:lightslategrey;
         }
         
 	</style>
 
 </head>
 <body>
+<div class='splash'>
+    <h1 class='fade-in'>Welcome to Snake Game</h1>
+</div> <br>
 <section id='layers'>
 <canvas id = 'canvas' width = '600' height = '600'></canvas>
 <canvas id = 'canvas1' width='300' height ='400'></canvas>

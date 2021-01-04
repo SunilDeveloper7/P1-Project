@@ -1,5 +1,20 @@
+const splash = document.querySelector('.splash');
+
+document.addEventListener('DOMContentLoaded',(e)=>{
+    setTimeout(()=>{
+        splash.classList.add('display-none');
+    },5000);
+})
+
+
 const canvas = document.getElementById('canvas');
+const canvas1 = document.getElementById('canvas1');
+const canvas2 = document.getElementById('canvas2');
+
+
 const ctx = canvas.getContext('2d');
+
+
 const box = 25;
 const canvasSize = 23;
 
@@ -87,11 +102,14 @@ for(let i = 0; i < snake.length; i++)
 	// if the snake eats the food
 	if(snakeX == food.x && snakeY == food.y)
 	{
-		score+=1;
-		food = {
+        score +=1;
+        food = {
 			x: Math.floor(1 + (Math.random() * (canvasSize - 1))) * box,
-			y: Math.floor(1 + (Math.random() * (canvasSize - 1))) * box 
-		}
+            y: Math.floor(1 + (Math.random() * (canvasSize - 1))) * box 
+            
+
+        }
+        
 	}
 	else
 	{
@@ -120,11 +138,17 @@ for(let i = 0; i < snake.length; i++)
 	//game over
 	if(snakeX < box || snakeY < box || 
 		snakeX > ((canvasSize - 1) * box)|| snakeY > ((canvasSize - 1) * box) ||
-		collision(newHead,snake))
+		collision(newHead,snake)) 
 	{
         alert('Game Over');
 		clearInterval(game);
-	}
+    }
+    else if(score >=6) {
+        alert('You won yaaaa..CONGRATS level is up');
+		clearInterval(game);
+    }
+
+
 
 	snake.unshift(newHead);
 	//draw in food
